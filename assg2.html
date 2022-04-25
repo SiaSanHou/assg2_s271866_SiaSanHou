@@ -1,0 +1,626 @@
+<html>
+<head>
+<style>
+.nav{
+	background-color: #69ffa2;
+	padding: 10px;
+	font-size:30px;
+	}
+
+.flavours{
+		text-align: center;
+		background-color: #bbf8ff;
+		font-size:30px;
+	}
+
+.BUTTON{
+	width : 200px;
+	height: 50px;
+	transform:translate(-50%,-50%);
+	overflow:hidden;
+}
+
+.btn{
+	width : 200px;
+	height: 50px;
+	position :absolute;
+	background:#fd86868f;
+	cursor:pointer;
+	color:white;
+	font-size:20px;
+}
+
+.bg{
+	width : 25%;
+	height: 100%;
+	position :absolute;
+	top:0;
+	left:0;
+	background:blue;
+	z-index:-1;
+	transform:translateY(100%);
+	transition:all .4s;
+}
+
+.bg:nth-child(3){
+	left : 50px;
+	transition-delay:.1s;
+}
+
+.bg:nth-child(4){
+	left : 100px;
+	transition-delay:.2s;
+}
+
+.bg:nth-child(5){
+	left : 150px;
+	transition-delay:.3s;
+}
+
+.BUTTON:hover .bg{
+	transform:translateY(0);
+}
+
+.item_text_style{
+	width:10; 
+	text-align:center;
+}
+
+.popup .receipt {
+	position:absolute;
+	top:41%;
+	left:50%;
+	transform:translate(-50%,-50%) scale(0);
+	background:#fff;
+	width:500px;
+	z-index:1;
+	padding:20px;
+	border: 3px solid red;
+	box-sizing:border-box;
+
+	}
+
+.popup .closebtn {
+	cursor:pointer;
+	position:absolute;
+	right:15px;
+	top:15px;
+	width:30px;
+	height:30px;
+	background:#d27878;
+	color:#fff;
+	font-size:25px;
+	font-weight:600;
+	line-height:30px;
+	text-align:center;
+	border-radius:50%;
+	}
+
+.popup.active .receipt {
+	transition:all 300ms ease-in-out;
+	transform:translate(-50%,-50%) scale(1);
+}
+
+.popup.active .overlay {
+	display:block;
+}
+</style>
+</head>
+<title>ABC cafe</title>
+<body bgcolor = "#d6b8ff">
+
+	<div class="nav">
+	<form action="/action_page.php" method="post" style="text-align:center" >
+	<br>
+  	<b>ABC Ice Cream Enterprise</b>
+  	</form>
+	
+	</div>
+
+	<div class="flavours" id="flavours" align="center">
+	<br>
+	
+	<marquee><span style='font-size:20px;'>&#127881;&#127881;&#127881;&#127881;&#127881;</span>
+	<b>Types of Flavour</b><span style='font-size:20px;'>&#127881;&#127881;&#127881;&#127881;&#127881;</span></marquee>
+	
+	<br><br>
+	</div>
+	<br><br>
+	
+	<!--type-->	
+	<table border = "1" width = "100%">
+		<tr>
+			<td width="200">
+			</td>
+			
+			<td width="220" height="340" align="center" bgcolor="white">
+				<image src="milo.png"><br><br>
+				<b>Nestle Milo</b>
+					<br><br><b class="price1" id="price1">RM 10.00</b><br><br>
+				<input type="text" id="q1" value="0" style="width:100px; text-align:center">
+				<input type="button" class="sub1" id="sub1" onclick="sub1()" value="&minus;">
+				<input type="button" class="add1" id="add1" onclick="add1()" value="&plus;">	
+
+			</td>
+					
+			<td width="50">
+			</td>
+					
+			<td width="220" height="340" align="center" bgcolor="white">
+				<image src="kitkat.png">
+				<br><br>
+				<b>Nestle KitKat</b>
+				<br><br><b class="price2" id="price2">RM 10.00</b><br><br>
+				<input type="text" id="q2" value="0" style="width:100px; text-align:center">
+				<input type="button" class="sub2" id="sub2" onclick="sub2()" value="&minus;">
+				
+				<input type="button" class="add2" id="add2" onclick="add2()" value="&plus;">	
+			</td>
+				
+			<td width="50">
+			</td>
+					
+			<td width="220" height="340" align="center" bgcolor="white">
+				<image src="neapolitan.png">
+				<br><br>
+				<b>Nestle Neapolitan</b>
+				<br><br><b class="price3" id="price3">RM 10.00</b><br><br>
+				
+				<input type="text" id="q3" value="0" style="width:100px; text-align:center">
+				<input type="button" class="sub3" id="sub3" onclick="sub3()" value="&minus;">
+				<input type="button" class="add3" id="add3" onclick="add3()" value="&plus;">	
+			</td>
+				
+			<td width="200">
+			</td>
+					
+		</tr>
+	</table>	<br>
+
+	<table border = "1" width = "100%">
+		<tr>
+			<td width="200">
+			</td>
+			
+			<td width="220" height="340" align="center" bgcolor="white">
+				<image src="rainbow.png"><br><br>
+				<b>Wall's Rainbow</b>
+				<br><br><b class="price4" id="price4">RM 10.00</b><br><br>
+				<input type="text" id="q4" value="0" style="width:100px; text-align:center">
+				<input type="button" class="sub4" id="sub4" onclick="sub4()" value="&minus;">
+				
+				<input type="button" class="add4" id="add4" onclick="add4()" value="&plus;">	
+
+			</td>
+					
+			<td width="50">
+			</td>
+					
+			<td width="220" height="340" align="center" bgcolor="white">
+				<image src="triple.png">
+				<br><br>
+				<b>Wall's 3 in 1 Chocolate</b>
+				<br><br><b class="price5" id="price5">RM 12.00</b><br><br>
+				
+				<input type="text" id="q5" value="0" style="width:100px; text-align:center">
+				<input type="button" class="sub5" id="sub5" onclick="sub5()" value="&minus;">
+				<input type="button" class="add5" id="add5" onclick="add5()" value="&plus;">	
+			</td>
+				
+			<td width="50">
+			</td>
+					
+			<td width="220" height="340" align="center" bgcolor="white">
+				<image src="vanila.png">
+				<br><br>
+				<b>Wall's Vanila</b>
+				<br><br><b class="price6" id="price6">RM 12.00</b><br><br>
+				
+				<input type="text" id="q6" value="0" style="width:100px; text-align:center">
+				<input type="button" class="sub6" id="sub6" onclick="sub6()" value="&minus;">
+				<input type="button" class="add6" id="add6" onclick="add6()" value="&plus;">
+					
+			</td>
+				
+			<td width="200">
+			</td>
+					
+		</tr>
+	</table>
+
+<br><br><br>
+
+		<!--Button-->
+		<table border = "0" width = "100%">
+		<tr>
+		<td width="50%"></td>
+
+		<td>
+			<div class = "BUTTON" >
+				<input type="button" class="btn" id="checkout" onclick="popupbtn()" value="Check Out">
+				<div class = "bg"></div>
+				<div class = "bg"></div>
+				<div class = "bg"></div>
+				<div class = "bg"></div>
+			</div>
+			<br>
+				<div class = "BUTTON">	
+				<input type="button" class="btn" id="clear" onclick="clearbtn()" value="Clear">
+				<div class = "bg"></div>
+				<div class = "bg"></div>
+				<div class = "bg"></div>
+				<div class = "bg"></div>
+			</div>
+		</td>
+		</tr>
+		</table>	
+
+	<!--receipt-->
+	<div class="popup" id="popup-1">
+	<div class="overlay"></div>
+	<div class="receipt">
+    <div class="closebtn" onclick="popupbtn()">&times;</div><br>
+    <br>
+	<table border = "0" width="100%">
+	<tr><td>
+	<h1>Receipt</h1> </td>
+	<td width = "150"></td>
+	<td align = "center">
+	<div class="date" id="date"></div></td>
+	</table>
+	
+    <table border="0" width="100%">
+			<tr>
+				<td>
+					<b>Flavours</b><br><br>
+				</td>
+				<td align="center">
+					<b>Price(RM)</b><br><br>
+				</td>
+				<td align="center">
+					<b>Quantity/cup</b><br><br>
+				</td>
+				<td align="center">
+					<b>Total<b>(RM)</b><br><br>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					Nestle Milo<br>
+				</td>
+				<td>
+					<div class="receipt_price1" id="receipt_price1" align="center"></div>
+				</td>
+				<td align="center">
+					<div class="receipt_quantity1" id="receipt_quantity1" align="center"></div>
+				</td>
+				<td>
+					<div class="receipt_total1" id="receipt_total1" align="center"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Nestle KitKat
+				</td>
+				<td>
+					<div class="receipt_price2" id="receipt_price2" align="center"></div>
+				</td>
+				<td align="center">
+					<div class="receipt_quantity2" id="receipt_quantity2" align="center"></div>
+				</td>
+				<td>
+					<div class="receipt_total2" id="receipt_total2" align="center"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					Nestle Neapolitan
+				</td>
+				<td>
+					<div class="receipt_price3" id="receipt_price3" align="center"></div>
+				</td>
+				<td align="center">
+					<div class="receipt_quantity3" id="receipt_quantity3" align="center"></div>
+				</td>
+				<td>
+					<div class="receipt_total3" id="receipt_total3" align="center"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					Wall's Rainbow
+				</td>
+				<td>
+					<div class="receipt_price4" id="receipt_price4" align="center"></div>
+				</td>
+				<td align="center">
+					<div class="receipt_quantity4" id="receipt_quantity4" align="center"></div>
+				</td>
+				<td>
+					<div class="receipt_total4" id="receipt_total4" align="center"></div>
+				</td>
+			</tr>
+					
+			<tr>
+				<td>
+					Wall's 3 in 1 Chocolate
+				</td>
+				<td>
+					<div class="receipt_price5" id="receipt_price5" align="center"></div>
+				</td>
+				<td align="center">
+					<div class="receipt_quantity5" id="receipt_quantity5" align="center"></div>
+				</td>
+				<td>
+					<div class="receipt_total5" id="receipt_total5" align="center"></div>
+				</td>
+			</tr>
+					
+			<tr>
+				<td>
+					Wall's Vanila
+				</td>
+				<td>
+					<div class="receipt_price6" id="receipt_price6" align="center"></div>
+				</td>
+				<td align="center">
+					<div class="receipt_quantity6" id="receipt_quantity6" align="center"></div>
+				</td>
+				<td>
+					<div class="receipt_total6" id="receipt_total6" align="center"></div>
+				</td>
+			</tr>
+			<br>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><br>
+					<b>Subtotal(RM)</b>
+				</td>
+				<td><br>
+					<div class="receipt_subtotal" id="receipt_subtotal" align="center"></div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td></td>
+				<td>
+					<b>Discount(RM)</b>
+				</td>
+				<td>
+					<div class="receipt_discount" id="receipt_discount" align="center"></div>
+				</td>
+			</tr>
+					
+			<tr>
+				<td></td>
+				<td></td>
+				<td>
+					<b>Total(RM)</b>
+				</td>
+				<td>
+					<div class="receipt_total" id="receipt_total" align="center"></div>
+				</td>
+			</tr>
+		</table>
+  </div>
+</div>
+
+<script type="text/javascript">
+function popupbtn(){
+
+	/*calculation*/
+	var iq1 = document.getElementById("q1").value;
+	var iq2 = document.getElementById("q2").value;
+	var iq3 = document.getElementById("q3").value;
+	var iq4 = document.getElementById("q4").value;
+	var iq5 = document.getElementById("q5").value;
+	var iq6 = document.getElementById("q6").value;
+
+	if(iq1==0 && iq2==0 && iq3==0 && iq4==0 && iq5==0 && iq6==0){ 
+				
+	window.alert("Please Insert Quantity Before Check Out! Thank You");
+	}
+	else{
+		document.getElementById("popup-1").classList.toggle("active");
+		
+			var d = new Date();
+			d.setDate(d.getDate());
+			var n = d.getDay();
+			var current_date = d.getDate();
+			var month = (d.getMonth()+1);
+			var year = d.getFullYear();
+			if(n==0 || n==1 || n==2 || n==3 || n==4 || n==5){
+				
+			/*price*/
+			var p1 = 10.00;
+			var p2 = 10.00;
+			var p3 = 10.00;
+			var p4 = 10.00;
+			var p5 = 12.00;
+			var p6 = 12.00;
+
+				
+			var day_names = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+				
+			}else{
+			
+				var p1 = 6.50;
+				var p2 = 6.50;
+				var p3 = 6.50;
+				var p4 = 6.50;
+				var p5 = 8.00;
+				var p6 = 8.00;
+				
+				var day_names = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+			}
+				document.getElementById("date").innerHTML = day_names[n] + " " +current_date +"-"+month + "-"+ year;
+		
+				document.getElementById('receipt_price1').innerText = p1.toFixed(2);
+				document.getElementById('receipt_price2').innerText = p2.toFixed(2);
+				document.getElementById('receipt_price3').innerText = p3.toFixed(2);
+				document.getElementById('receipt_price4').innerText = p4.toFixed(2);
+				document.getElementById('receipt_price5').innerText = p5.toFixed(2);
+				document.getElementById('receipt_price6').innerText = p6.toFixed(2);
+
+				/*receipt total price calculation*/
+				var total1 = iq1 * p1;
+				var total2 = iq2 * p2;
+				var total3 = iq3 * p3;
+				var total4 = iq4 * p4;
+				var total5 = iq5 * p5;
+				var total6 = iq6 * p6;				
+
+				/*receipt input quantity*/
+				document.getElementById('receipt_quantity1').innerText = iq1;
+				document.getElementById('receipt_quantity2').innerText = iq2;
+				document.getElementById('receipt_quantity3').innerText = iq3;
+				document.getElementById('receipt_quantity4').innerText = iq4;
+				document.getElementById('receipt_quantity5').innerText = iq5;
+				document.getElementById('receipt_quantity6').innerText = iq6;
+
+				/*receipt total*/
+				document.getElementById('receipt_total1').innerText = total1.toFixed(2);
+				document.getElementById('receipt_total2').innerText = total2.toFixed(2);
+				document.getElementById('receipt_total3').innerText = total3.toFixed(2);
+				document.getElementById('receipt_total4').innerText = total4.toFixed(2);
+				document.getElementById('receipt_total5').innerText = total5.toFixed(2);
+				document.getElementById('receipt_total6').innerText = total6.toFixed(2);
+				
+				var subtotal= total1 + total2 + total3 + total4 + total5 +total6 ;
+				document.getElementById('receipt_subtotal').innerText = subtotal.toFixed(2);
+				
+				var d = new Date();
+				var n = d.getDay();
+				if(subtotal >= 20){
+					var discount = subtotal * 0.30;
+					var total = subtotal * 0.70;
+				}else{
+					var discount = subtotal * 0;
+					var total = subtotal - discount;
+				}
+
+				document.getElementById('receipt_discount').innerText = discount.toFixed(2);
+				document.getElementById('receipt_total').innerText = total.toFixed(2);
+	}
+}
+/*add minus button*/
+function add1(){
+    var value = parseInt(document.getElementById('q1').value, 10);
+    value = isNaN(value) ? 0 : value;
+    if(value<100){
+        ++value;
+            document.getElementById('q1').value = value;
+	}
+}
+function sub1(){
+    var value = parseInt(document.getElementById('q1').value, 10);
+	value = isNaN(value) ? 0 : value;
+    if(value>0){
+        --value;
+            document.getElementById('q1').value = value;
+	}
+}
+
+function add2(){
+    var value = parseInt(document.getElementById('q2').value, 10);
+    value = isNaN(value) ? 0 : value;
+    if(value<100){
+        value++;
+            document.getElementById('q2').value = value;
+	}
+}
+function sub2(){
+    var value = parseInt(document.getElementById('q2').value, 10);
+	value = isNaN(value) ? 0 : value;
+    if(value>0){
+        value--;
+            document.getElementById('q2').value = value;
+	}
+}
+
+function add3(){
+    var value = parseInt(document.getElementById('q3').value, 10);
+    value = isNaN(value) ? 0 : value;
+    if(value<100){
+        value++;
+            document.getElementById('q3').value = value;
+	}
+}
+function sub3(){
+
+    var value = parseInt(document.getElementById('q3').value, 10);
+	value = isNaN(value) ? 0 : value;
+    if(value>0){
+        value--;
+            document.getElementById('q3').value = value;
+	}
+}
+
+function add4(){
+    var value = parseInt(document.getElementById('q4').value, 10);
+    value = isNaN(value) ? 0 : value;
+    if(value<100){
+        ++value;
+            document.getElementById('q4').value = value;
+	}
+}
+function sub4(){
+    var value = parseInt(document.getElementById('q4').value, 10);
+	value = isNaN(value) ? 0 : value;
+    if(value>0){
+        --value;
+            document.getElementById('q4').value = value;
+	}
+}
+
+function add5(){
+    var value = parseInt(document.getElementById('q5').value, 10);
+    value = isNaN(value) ? 0 : value;
+    if(value<100){
+        value++;
+            document.getElementById('q5').value = value;
+	}
+}
+function sub5(){
+    var value = parseInt(document.getElementById('q5').value, 10);
+	value = isNaN(value) ? 0 : value;
+    if(value>0){
+        value--;
+            document.getElementById('q5').value = value;
+	}
+}
+
+function add6(){
+    var value = parseInt(document.getElementById('q6').value, 10);
+    value = isNaN(value) ? 0 : value;
+    if(value<100){
+        value++;
+            document.getElementById('q6').value = value;
+	}
+}
+function sub6(){
+    var value = parseInt(document.getElementById('q6').value, 10);
+	value = isNaN(value) ? 0 : value;
+    if(value>0){
+        value--;
+            document.getElementById('q6').value = value;
+	}
+}
+			
+function clearbtn(){
+	document.getElementById('q1').value = 0;
+	document.getElementById('q2').value = 0;
+	document.getElementById('q3').value = 0;
+	document.getElementById('q4').value = 0;
+	document.getElementById('q5').value = 0;
+	document.getElementById('q6').value = 0;
+}
+
+</script>
+</body>
+</html>
